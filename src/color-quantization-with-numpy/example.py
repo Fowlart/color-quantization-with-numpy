@@ -119,7 +119,6 @@ if __name__ == "__main__":
     image_array = np.array(image) / 255.0
 
     # Quantize
-    n_colors = 5
     quantized_image, codebook, height, width = quantize(image_array)
 
     # Display
