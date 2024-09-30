@@ -5,6 +5,9 @@ import os
 
 
 def _compute_euclidean_norm(vector: np.ndarray) -> np.float64:
+
+    np.set_printoptions(suppress=True, precision=7)
+
     if vector.ndim != 1:
         raise ValueError("Input vector must be one-dimensional.")
 
@@ -28,7 +31,7 @@ pixels.mean: {pixels.mean()}
     
 pixels.max: {pixels.max()}
 
-pixel example: {pixels[165234, :]}
+pixel example: {pixels[165236, :]}
 """)
 
     codebook = np.array([
@@ -59,13 +62,13 @@ pixel example: {pixels[165234, :]}
     # find an index of min Euclidean norm, for each pixel-color pair
     labels = np.argmin(euclidean_norms, axis=1)
 
-    distance_for_one_pixel = arr_dist[[165234], :, :].astype(np.float32)
+    distance_for_one_pixel = arr_dist[[165236], :, :].astype(np.float32)
 
     # print for debug
     print(f"""
 arr_dist.shape: {arr_dist.shape}
         
-arr_dist example(165234 pixel):
+arr_dist example(165236 pixel):
 
 distance_for_one_pixel.shape: {distance_for_one_pixel.shape}
 
@@ -80,11 +83,11 @@ euclidean_norms.max: {euclidean_norms.max()}, euclidean_norms.mean: {euclidean_n
         
 euclidean_norms example: 
             
-{euclidean_norms[[165234], :]}
+{euclidean_norms[[165236], :]}
             
 labels: {labels}
 
-label for pixel 165234: {labels[165234]}
+label for pixel 165236: {labels[165236]}
 """)
 
     _, y, _ = distance_for_one_pixel.shape
